@@ -28,6 +28,15 @@ jobs:
         - image: circleci/node:13.8.0
       steps:
         - run: echo world
+  print_Env_Var:
+      docker:
+        - image: circleci/node:13.8.0
+      steps:
+        - checkout
+        - run:
+            name: "echo an env variable as paert of the project"
+            command: |
+              echo $MY_ENV_VAR
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -37,3 +46,4 @@ workflows:
       #- say-hello
       - print_hello
       - print_world
+      - print_Env_Var
